@@ -1,0 +1,15 @@
+{
+  "name": "HA Bridge",
+  "version": "0.0.1",
+  "slug": "ha-bridge",
+  "description": "HA Bridge 4.5.6 - Hue Emulator (https://github.com/bwssytems/ha-bridge)",
+  "arch": ["armhf"],
+  "startup": "application",
+  "boot": "auto",
+	"options": {},
+  "schema": {},
+  "ports": {
+    "80/tcp": 8080,
+    "50000/tcp": 50000
+  }
+}

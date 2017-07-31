@@ -1,0 +1,16 @@
+{
+  "name": "Node-RED",
+  "version": "0.0.5",
+  "slug": "nodered",
+  "description": "Node-RED - (https://nodered.org/)",
+  "arch": [
+    "armhf"
+  ],
+  "startup": "application",
+  "boot": "auto",
+  "options": {},
+  "schema": {},
+  "ports": {
+    "1880/tcp": 1880
+  }
+}
