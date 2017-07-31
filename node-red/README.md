@@ -28,4 +28,4 @@ iframe_panel:
 
 ## Support
 
-Something doesn't work as expected? Please open an [issue](https://github.com/notoriousbdg/hassio-addons/issues).
+Please use [this thread](https://community.home-assistant.io/t/repository-notoriousbdg-add-ons-node-red-and-ha-bridge/23247) for feedback.

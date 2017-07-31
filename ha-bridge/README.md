@@ -6,18 +6,19 @@
 ## Installation
 
 1. Add my [Hass.io](https://home-assistant.io/hassio/) add-on [repository](https://github.com/notoriousbdg/hassio-addons)
-2. Install the "HA Bridge" add-on
-3. Start the "HA Bridge" add-on
-4. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed HA Bridge UI into Home Assistant UI using this example:
+2. Install the `HA Bridge` add-on
+3. Start the `HA Bridge` add-on
+4. Upon first logon, change the `UPNP IP Address` on the `Bridge Control` page to the IP of your Hass.io machine
+5. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed HA Bridge UI into Home Assistant UI using this example:
 
 ```yaml
 iframe_panel:
   habridge:
     title: 'HA Bridge'
-    url: 'http://hassio.local:8080'
+    url: 'http://hassio.local:80'
     icon: mdi:lightbulb-on-outline
 ```
 
 ## Support
 
-Something doesn't work as expected? Please open an [issue](https://github.com/notoriousbdg/hassio-addons/issues).
+Please use [this thread](https://community.home-assistant.io/t/repository-notoriousbdg-add-ons-node-red-and-ha-bridge/23247) for feedback.
