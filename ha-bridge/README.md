@@ -20,4 +20,4 @@ iframe_panel:
 
 ## Support
 
-Something doesn't work as expected? Please open an [issue].(https://github.com/notoriousbdg/hassio-addons/issues).
+Something doesn't work as expected? Please open an [issue](https://github.com/notoriousbdg/hassio-addons/issues).

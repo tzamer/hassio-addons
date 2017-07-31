@@ -14,4 +14,4 @@ My repository for [Hass.io](https://home-assistant.io/hassio/) add-ons.
 
 ## Support
 
-Something doesn't work as expected? Please open an [issue].(https://github.com/notoriousbdg/hassio-addons/issues).
+Something doesn't work as expected? Please open an [issue](https://github.com/notoriousbdg/hassio-addons/issues).
