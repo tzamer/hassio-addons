@@ -1,6 +1,6 @@
 {
   "name": "Node-RED",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "slug": "nodered",
   "description": "Node-RED - (https://nodered.org/)",
   "arch": [
