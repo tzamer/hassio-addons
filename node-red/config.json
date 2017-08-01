@@ -4,7 +4,8 @@
   "slug": "nodered",
   "description": "Node-RED - (https://nodered.org/)",
   "arch": [
-    "armhf"
+    "armhf",
+    "amd64"
   ],
   "startup": "application",
   "boot": "auto",
