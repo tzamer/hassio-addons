@@ -1,8 +1,8 @@
 {
   "name": "HA Bridge",
-  "version": "4.5.6",
+  "version": "4.5.6p1",
   "slug": "ha-bridge",
-  "description": "HA Bridge 4.5.6 - Hue Emulator (https://github.com/bwssytems/ha-bridge)",
+  "description": "HA Bridge - Hue Emulator (https://github.com/bwssytems/ha-bridge)",
   "arch": [
     "armhf"
   ],
