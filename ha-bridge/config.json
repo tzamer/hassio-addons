@@ -8,9 +8,16 @@
   ],
   "startup": "application",
   "boot": "auto",
+  "host_network": true,
   "map": ["share:rw", "ssl"],
-  "options": {},
-  "schema": {},
+  "options": {
+    "serverip": null,
+    "version": "latest"
+  },
+  "schema": {
+    "serverip": "str",
+    "version": "str"
+  },
   "ports": {
     "80/tcp": 80,
     "50000/udp": 50000,

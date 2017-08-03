@@ -1,33 +1,55 @@
-# Create /share/habridge folder
-if [ ! -d /share/habridge ]; then
+#!/bin/bash
+
+CONFIG_PATH=/data/options.json
+SERVERIP=$(jq --raw-output ".serverip" $CONFIG_PATH)
+VERSION=$(jq --raw-output ".version" $CONFIG_PATH)
+SERVERPORT=80
+
+if [ "$SERVERIP" == "" ]; then
+  echo "[ERROR] serverip must be specified!"
+  exit 1
+fi
+
+# Create /share/habridge/data folder
+if [ ! -d /share/habridge/data ]; then
   echo "[INFO] Creating /share/habridge folder"
-  mkdir -p /share/habridge
+  mkdir -p /share/habridge/data
 fi
 
 # Migrate existing config files to handle upgrades from previous version
-if [ -e /data/habridge.config ] && [ ! -e /share/habridge/habridge.config ]; then
+if [ -e /data/habridge.config ] && [ ! -e /share/habridge/data/habridge.config ]; then
   # Migrate existing habridge.config file
-  echo "[INFO] Migrating existing habridge.config from /data to /share/habridge"
-  mv -f /data/habridge.config /share/habridge
-
-  # Migrate existing options.json file
-  if [ -e /data/options.json ] && [ ! -e /share/habridge/options.json ]; then
-    echo "[INFO] Migrating existing options.json from /data to /share/habridge"
-    mv -f /data/options.json /share/habridge
-  fi
-
-  # Migrate existing backup files
-  find /data -name '*.cfgbk' \
-    -exec echo "[INFO] Moving existing {} to /share/habridge" \; \
-    -exec mv {} /share/habridge \;
+  echo "[INFO] Migrating existing habridge.config from /data to /share/habridge/data"
+  mv -f /data/habridge.config /share/habridge/data
 fi
 
-# Update UPNP listener address to 0.0.0.0
-if grep -E '172\.17\.0\.[0-9]+' /share/habridge/habridge.config > /dev/null; then
-  echo "[INFO] Updating UPNP listener"
-  mv -f /share/habridge/habridge.config /share/habridge/habridge.config.bak
-  jq '.upnpconfigaddress = "0.0.0.0"' /share/habridge/habridge.config.bak | jq -c '.upnpdevicedb = "/share/habridge/device.db"' > /share/habridge/habridge.config
-  rm -f /share/habridge/habridge.config.bak
+# Migrate existing backup files
+find /data -name '*.cfgbk' \
+  -exec echo "[INFO] Moving existing {} to /share/habridge" \; \
+  -exec mv -f {} /share/habridge \;
+
+cd /share/habridge
+if [ ! -z $VERSION ] && [ ! "$VERSION" == "" ] && [ ! "$VERSION" == "null" ] && [ ! "$VERSION" == "latest" ]; then
+  echo "Manual version override:" $VERSION
+else
+  #Check the latest version on github
+  VERSION="$(curl -sX GET https://api.github.com/repos/bwssytems/ha-bridge/releases/latest | grep 'tag_name' | cut -d\" -f4)"
+  VERSION=${VERSION:1}
+  echo "Latest version on bwssystems github repo is" $VERSION
 fi
 
-java -jar -Dconfig.file=/share/habridge/habridge.config -Djava.net.preferIPv4Stack=true /habridge/app.jar
+# Download jar
+if [ ! -f /share/habridge/ha-bridge-"$VERSION".jar ]; then
+  echo "Installing version '$VERSION'"
+  wget https://github.com/bwssytems/ha-bridge/releases/download/v"$VERSION"/ha-bridge-"$VERSION".jar -O /share/habridge/ha-bridge-"$VERSION".jar
+else
+  echo "Using existing version '$VERSION'"
+fi
+echo "Setting correct permissions"
+chown -R nobody:users /share/habridge
+
+ADDPARAM="-Dupnp.config.address=$SERVERIP -Dserver.port=$SERVERPORT -Djava.net.preferIPv4Stack=true"
+echo -e "Parameters used:\n  Server IP : $SERVERIP\n  Server Port : $SERVERPORT\n  preferIPv4Stack : true"
+
+echo "Starting Home Automation Bridge"
+java -jar $ADDPARAM /share/habridge/ha-bridge-"$VERSION".jar 2>&1 | tee /share/habridge/ha-bridge.log

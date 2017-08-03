@@ -9,10 +9,8 @@ RUN apt-get update && apt-get install -y oracle-java8-installer jq
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # install ha-bridge
-ENV VERSION 4.5.6
 RUN mkdir /habridge
 WORKDIR /data
-RUN wget -O /habridge/app.jar https://github.com/bwssytems/ha-bridge/releases/download/v$VERSION/ha-bridge-$VERSION.jar
 
 # Copy data for add-on
 COPY run.sh /
