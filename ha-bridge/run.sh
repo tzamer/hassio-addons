@@ -22,4 +22,10 @@ if [ -e /data/habridge.config ] && [ ! -e /share/habridge/habridge.config ]; the
     -exec mv {} /share/habridge \;
 fi
 
+# Update UPNP listener address to 0.0.0.0
+if grep -E '172\.17\.0\.[0-9]+' /share/habridge/habridge.config > /dev/null; then
+  echo "[INFO] Updating UPNP listen address to 0.0.0.0"
+  sed -i -r 's/172\.17\.0\.[0-9]+/0.0.0.0/g' /share/habridge/habridge.config
+fi
+
 java -jar -Dconfig.file=/share/habridge/habridge.config -Djava.net.preferIPv4Stack=true /habridge/app.jar
