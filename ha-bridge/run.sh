@@ -5,13 +5,13 @@ if [ ! -d /share/habridge ]; then
 fi
 
 # Migrate existing habridge.config file
-if [ ! -d /data/habridge.config ]; then
+if [ -e /data/habridge.config ]; then
 	echo "[INFO] Migrating existing habridge.config from /data to /share/habridge"
 	mv -f /data/habridge.config /share/habridge
 fi
 
 # Migrate existing options.json file
-if [ ! -d /data/options.json ]; then
+if [ -e /data/options.json ]; then
 	echo "[INFO] Migrating existing options.json from /data to /share/habridge"
 	mv -f /data/options.json /share/habridge
 fi
