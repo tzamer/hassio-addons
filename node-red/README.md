@@ -29,3 +29,8 @@ iframe_panel:
 ## Support
 
 Please use [this thread](https://community.home-assistant.io/t/repository-notoriousbdg-add-ons-node-red-and-ha-bridge/23247) for feedback.
+
+## Changelog
+
+### 0.0.1 (2017-07-31)
+#### Initial Release
