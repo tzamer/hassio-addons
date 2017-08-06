@@ -8,26 +8,40 @@
 1. Add my [Hass.io](https://home-assistant.io/hassio/) add-on [repository](https://github.com/notoriousbdg/hassio-addons) - https://github.com/notoriousbdg/hassio-addons
 2. Install the `HA Bridge` add-on
 3. Edit the configuration options
-	1. Change serverip to the IP of the Hass.io machine (e.g. `192.168.0.10`)
-	2. Leave version set to `latest` to always use the latest version, or manually specify a version (e.g. `4.5.6`).
+    1. Change serverip to the IP of the Hass.io machine (e.g. `192.168.0.10`)
+    2. Leave version set to `latest` to always use the latest version, or manually specify a version (e.g. `4.5.6`).
 
-	```json
-	{
-  	"serverip": "192.168.0.10",
-  	"version": "latest"
-	}
-	```
+    ```json
+    {
+    "serverip": "192.168.0.10",
+    "version": "latest"
+    }
+    ```
 
 4. Start the `HA Bridge` add-on
-5. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed HA Bridge UI into Home Assistant UI using this example:
+5. Home Assistant will attempt to discover devices exposed through HA Bridge as though it's a Hue device, so it's important to disable discovery.  Additional details are on the [Discovery](https://home-assistant.io/components/discovery/) component page.
 
-	```yaml
-	iframe_panel:
-  	habridge:
-	    title: 'HA Bridge'
-	    url: 'http://hassio.local:80'
-	    icon: mdi:lightbulb-on-outline
-	```
+    ```yaml
+    discovery:
+      ignore:
+        - philips_hue
+    ```
+6. (Optional) Physical Hue hubs will need to be added to Home Assistant manually since auto-discovery is now disabled.  Refer to [Philips Hue](https://home-assistant.io/components/light.hue/) component page for more configuration details.
+
+    ```yaml
+    light:
+      platform: hue
+      host: DEVICE_IP_ADDRESS
+    ```
+7. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed HA Bridge UI into Home Assistant UI using this example:
+
+    ```yaml
+    iframe_panel:
+    habridge:
+        title: 'HA Bridge'
+        url: 'http://hassio.local:80'
+        icon: mdi:lightbulb-on-outline
+    ```
 
 ## Support
 
