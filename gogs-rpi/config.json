@@ -1,0 +1,22 @@
+{
+  "name": "Gogs for Raspberry Pi",
+  "version": "0.11.19",
+  "slug": "gogs-rpi",
+  "description": "Gogs is a painless self-hosted Git service. https://gogs.io",
+  "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/gogs-rpi",
+  "arch": [
+    "armhf"
+  ],
+  "image": "gogs/gogs-rpi",
+  "map": [
+    "share:rw"
+  ],
+  "startup": "application",
+  "boot": "auto",
+  "options": {},
+  "schema": {},
+  "ports": {
+    "22/tcp": 10022,
+    "3000/tcp": 10080
+  }
+}
