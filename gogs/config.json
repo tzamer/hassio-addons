@@ -1,0 +1,32 @@
+{
+  "name": "Gogs",
+  "version": "0.11.19p1",
+  "slug": "gogs",
+  "description": "Gogs is a painless self-hosted Git service (https://gogs.io)",
+  "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/gogs",
+  "webui": "http://[HOST]:[PORT:10080]",
+  "arch": [
+    "armhf",
+    "amd64"
+  ],
+  "map": [
+    "share:rw",
+    "ssl"
+  ],
+  "startup": "application",
+  "boot": "auto",
+  "options": {
+    "ssl": false,
+    "certfile": "fullchain.pem",
+    "keyfile": "privkey.pem"
+  },
+  "schema": {
+    "ssl": "bool",
+    "certfile": "str",
+    "keyfile": "str"
+  },
+  "ports": {
+    "22/tcp": 10022,
+    "3000/tcp": 10080
+  }
+}
