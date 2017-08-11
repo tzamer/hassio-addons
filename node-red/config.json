@@ -3,6 +3,8 @@
   "version": "0.1.1",
   "slug": "nodered",
   "description": "Node-RED - (https://nodered.org/)",
+  "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/node-red",
+  "webui": "http://[HOST]:[PORT:1880]",
   "arch": [
     "armhf",
     "amd64"

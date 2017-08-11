@@ -4,6 +4,7 @@
   "slug": "gogs-rpi",
   "description": "Gogs is a painless self-hosted Git service. https://gogs.io",
   "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/gogs-rpi",
+  "webui": "http://[HOST]:[PORT:10080]",
   "arch": [
     "armhf"
   ],
