@@ -16,7 +16,7 @@ else
     sed -i '/KEY_FILE.*=/d' /data/gogs/conf/app.ini
 
     if [ "$SSL" == "true" ]; then
-        echo "[INFO] Configuring SSL KEYFILE=/ssl/$KEYFILE CERTFILE=/ssl$CERTFILE"
+        echo "[INFO] Configuring SSL KEYFILE=/ssl/$KEYFILE CERTFILE=/ssl/$CERTFILE"
         sed -i "s/\[server\]/\[server\]\nPROTOCOL         = https\nCERT_FILE        = \/ssl\/$CERTFILE\nKEY_FILE         = \/ssl\/$KEYFILE/" /data/gogs/conf/app.ini
         sed -i "s/http:\/\//https:\/\//" /data/gogs/conf/app.ini
     else
