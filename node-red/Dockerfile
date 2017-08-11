@@ -5,7 +5,14 @@ WORKDIR /usr/src/node-red
 
 USER root
 
-RUN apt-get update && apt-get install -y jq
+RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+  && case "${dpkgArch##*-}" in \
+    amd64) \
+    apk add --no-cache jq;; \
+    armhf) \
+    apt-get update && apt-get install -y jq;; \
+    *) echo "unsupported architecture"; exit 1 ;; \
+  esac
 
 # Expose tcp/1880
 EXPOSE 1880
