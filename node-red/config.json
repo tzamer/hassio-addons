@@ -1,6 +1,6 @@
 {
   "name": "Node-RED",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "slug": "nodered",
   "description": "Node-RED - (https://nodered.org/)",
   "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/node-red",
@@ -15,9 +15,7 @@
   ],
   "startup": "application",
   "boot": "auto",
-  "ports": {
-    "1880/tcp": 1880
-  },
+  "host_network": true,
   "options": {
     "ssl": false,
     "certfile": "fullchain.pem",

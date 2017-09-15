@@ -50,3 +50,7 @@ Please use [this thread](https://community.home-assistant.io/t/repository-notori
 ### 0.1.1 (2017-08-10)
 #### Added
 - Option to enable SSL
+
+### 0.1.2 (2017-09-15)
+#### Changed
+- Changed to use host network to allow Node-RED to listen on arbitrary ports
