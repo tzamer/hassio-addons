@@ -9,11 +9,13 @@
 2. Install the `HA Bridge` add-on
 3. Edit the configuration options
     1. Change serverip to the IP of the Hass.io machine (e.g. `192.168.0.10`)
-    2. Leave version set to `latest` to always use the latest version, or manually specify a version (e.g. `4.5.6`).
+    2. Change serverport to the TCP port for HA Bridge to listen on (e.g. `80`)
+    3. Leave version set to `latest` to always use the latest version, or manually specify a version (e.g. `4.5.6`).
 
     ```json
     {
     "serverip": "192.168.0.10",
+    "serverport": 80,
     "version": "latest"
     }
     ```
@@ -65,3 +67,8 @@ A: tcp/80 (HTTP), udp/1900 (UPNP), and udp/50000 (UPNP)
 #### Changed
 - Migrated configuration to /share/habridge
 - Fixed issue preventing Alexa from discovering devices
+
+### 4.5.6p2 (2017-09-15)
+#### Added
+- Added support for amd64
+- Added option to specify server port

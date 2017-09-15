@@ -2,8 +2,8 @@
 
 CONFIG_PATH=/data/options.json
 SERVERIP=$(jq --raw-output ".serverip" $CONFIG_PATH)
+SERVERPORT=$(jq --raw-output ".serverport" $CONFIG_PATH)
 VERSION=$(jq --raw-output ".version" $CONFIG_PATH)
-SERVERPORT=80
 
 if [ "$SERVERIP" == "" ]; then
   echo "[ERROR] serverip must be specified!"
