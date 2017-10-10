@@ -58,3 +58,6 @@ A: tcp/10080 (HTTP) is forwarded to tcp/3000 and tcp/10022 (SSH) is forwarded to
 - Option to enable SSL
 - Support for amd64 platforms
 
+### 0.11.19p2 (2017-10-10)
+#### Added
+- Updated to support new hass.io build system

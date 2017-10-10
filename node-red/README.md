@@ -54,3 +54,7 @@ Please use [this thread](https://community.home-assistant.io/t/repository-notori
 ### 0.1.2 (2017-09-15)
 #### Changed
 - Changed to use host network to allow Node-RED to listen on arbitrary ports
+
+### 0.1.3 (2017-10-10)
+#### Added
+- Updated to support new hass.io build system

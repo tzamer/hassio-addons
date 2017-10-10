@@ -72,3 +72,7 @@ A: tcp/80 (HTTP), udp/1900 (UPNP), and udp/50000 (UPNP)
 #### Added
 - Added support for amd64
 - Added option to specify server port
+
+### 4.5.6p3 (2017-10-10)
+#### Added
+- Updated to support new hass.io build system

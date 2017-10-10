@@ -1,5 +1,5 @@
-#armhf:FROM nodered/node-red-docker:rpi
-#amd64:FROM nodered/node-red-docker:latest
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
 WORKDIR /usr/src/node-red
 

@@ -1,5 +1,5 @@
-#armhf:FROM gogs/gogs-rpi
-#amd64:FROM gogs/gogs
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
 RUN apk add --no-cache jq
 

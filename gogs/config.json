@@ -1,6 +1,6 @@
 {
   "name": "Gogs",
-  "version": "0.11.19p1",
+  "version": "0.11.19p2",
   "slug": "gogs",
   "description": "Gogs is a painless self-hosted Git service (https://gogs.io)",
   "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/gogs",

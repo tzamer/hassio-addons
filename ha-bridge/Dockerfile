@@ -1,5 +1,5 @@
-#armhf:FROM resin/rpi-raspbian:jessie
-#amd64:FROM debian:jessie
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
 # install java 8
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
