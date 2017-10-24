@@ -19,7 +19,7 @@
 
 4. Start the `Gogs` add-on
 5. Navigate to [http://hassio.local:10080](http://hassio.local:10080)
-6. Complete the install wizard (All fields, other than the database oes, must be configured as shown for Gogs to work correctly)
+6. Complete the install wizard (All fields, other than the database ones, must be configured as shown for Gogs to work correctly)
 
 
 | Field                | Value                       |
@@ -61,3 +61,7 @@ A: tcp/10080 (HTTP) is forwarded to tcp/3000 and tcp/10022 (SSH) is forwarded to
 ### 0.11.19p2 (2017-10-10)
 #### Added
 - Updated to support new hass.io build system
+
+### 0.11.19p3 (2017-10-24)
+#### Changed
+- Updated webui links in config.json to support ssl when enabled in the addons

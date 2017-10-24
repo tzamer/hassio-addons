@@ -21,7 +21,7 @@
 5. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed Node-RED UI into Home Assistant UI using this example:
 
     ```yaml
-    iframe_panel:
+    panel_iframe:
       nodered_flows:
         title: 'Node-RED Flows'
         url: 'http://hassio.local:1880'
@@ -31,7 +31,7 @@
 6. (Optional) If you install [Node-RED Dashboard](https://github.com/node-red/node-red-dashboard) in Node-RED, you can expose the dashboard in the [Hass.io](https://home-assistant.io/hassio/) UI using this example to your [panel_iframe](https://home-assistant.io/components/panel_iframe/) section:
 
     ```yaml
-    iframe_panel:
+    panel_iframe:
       nodered_ui:
         title: 'Node-RED Dashboard'
         url: 'http://hassio.local:1880/ui'
@@ -58,3 +58,7 @@ Please use [this thread](https://community.home-assistant.io/t/repository-notori
 ### 0.1.3 (2017-10-10)
 #### Added
 - Updated to support new hass.io build system
+
+### 0.1.4 (2017-10-24)
+#### Changed
+- Updated webui links in config.json to support ssl when enabled in the addons

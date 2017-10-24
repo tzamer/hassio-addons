@@ -38,7 +38,7 @@
 7. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed HA Bridge UI into Home Assistant UI using this example:
 
     ```yaml
-    iframe_panel:
+    panel_iframe:
     habridge:
         title: 'HA Bridge'
         url: 'http://hassio.local:80'

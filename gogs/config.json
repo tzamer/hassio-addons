@@ -1,10 +1,10 @@
 {
   "name": "Gogs",
-  "version": "0.11.19p2",
+  "version": "0.11.19p3",
   "slug": "gogs",
   "description": "Gogs is a painless self-hosted Git service (https://gogs.io)",
   "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/gogs",
-  "webui": "http://[HOST]:[PORT:10080]",
+  "webui": "[PROTO:ssl]://[HOST]:[PORT:10080]",
   "arch": [
     "armhf",
     "amd64"
