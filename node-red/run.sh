@@ -5,6 +5,7 @@ SSL=$(jq --raw-output ".ssl" $CONFIG_PATH)
 KEYFILE=$(jq --raw-output ".keyfile" $CONFIG_PATH)
 CERTFILE=$(jq --raw-output ".certfile" $CONFIG_PATH)
 USER_COUNT=$(jq --raw-output ".users | length" $CONFIG_PATH)
+HTTP_NODE_USER_COUNT=$(jq --raw-output ".http_node_user | length" $CONFIG_PATH)
 
 # Create /share/node-red folder
 if [ ! -d /share/node-red ]; then
@@ -20,6 +21,7 @@ if [ -e /data/settings.js ] && [ ! -e /share/node-red/settings.js ]; then
   mv -f /share/node-red/options.json $CONFIG_PATH
 fi
 
+# Create default config if none exists
 if [ ! -e /share/node-red/settings.js ]; then
   echo "[INFO] Creating default settings"
   cp /settings.js /share/node-red/settings.js
@@ -40,15 +42,12 @@ else
   sed -i "s/.*cert: fs.readFileSync/    \/\/    cert: fs.readFileSync/g" /share/node-red/settings.js
 fi
 
+# IDE Authentication
 if [ "$USER_COUNT" == "0" ]; then
-  echo "[INFO] Disabling Authentication"
+  echo "[INFO] Disabling IDE Authentication"
   sed -i '/^[ ]*adminAuth: {/,/},/ s/^[ ]*/    \/\//' /share/node-red/settings.js
 else
-  echo "[INFO] Installing node-red-admin"
-  npm install -g node-red-admin
-  # sed -i '/adminAuth: {/,/},/ s/\/\///' /share/node-red/settings.js
-
-  echo "[INFO] Updating users"
+  echo "[INFO] Updating IDE Users"
   sed '/adminAuth:/Q' /share/node-red/settings.js > /share/node-red/settings.js.new
   echo "    adminAuth: {" >> /share/node-red/settings.js.new
   echo "       type: \"credentials\"," >> /share/node-red/settings.js.new
@@ -62,7 +61,7 @@ else
     if [ "$i" != "0" ]; then
       echo "                ," >> /share/node-red/settings.js.new
     fi
-    echo "[INFO] Adding user $USERNAME"
+    echo "[INFO] Adding IDE User $USERNAME"
     echo "                {" >> /share/node-red/settings.js.new
     echo "                  username: \"$USERNAME\"," >> /share/node-red/settings.js.new
     echo "                  password: \"$HASH\"," >> /share/node-red/settings.js.new
@@ -80,5 +79,24 @@ else
   mv -f /share/node-red/settings.js.new /share/node-red/settings.js
 fi
 
+# HTTP Node User
+if [ "$HTTP_NODE_USER_COUNT" == "0" ]; then
+  echo "[INFO] Disabling HTTP Node Authentication"
+  sed -i '/^[ ]*httpNodeAuth: {/,/},/ s/^[ ]*/    \/\//' /share/node-red/settings.js
+else
+  echo "[INFO] Updating HTTP Node User"
+  USERNAME=$(jq --raw-output ".http_node_user[0].username" $CONFIG_PATH)
+  PASSWORD=$(jq --raw-output ".http_node_user[0].password" $CONFIG_PATH)
+  HASH=$(echo $PASSWORD | node-red-admin hash-pw | cut -d " " -f 2)
+  echo "[INFO] Adding HTTP Node User $USERNAME"
+  sed '/httpNodeAuth:/Q' /share/node-red/settings.js > /share/node-red/settings.js.new
+  echo "    httpNodeAuth: {user:\"$USERNAME\",pass:\"$HASH\"}," >> /share/node-red/settings.js.new
+  sed -n -e '/httpStaticAuth/,$p' /share/node-red/settings.js >> /share/node-red/settings.js.new
+
+  mv -f /share/node-red/settings.js /share/node-red/settings.js.old
+  mv -f /share/node-red/settings.js.new /share/node-red/settings.js
+fi
+
+# Startup
 cd /usr/src/node-red
 npm start -- --userDir /share/node-red

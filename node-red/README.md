@@ -19,10 +19,16 @@
           "password": "password",
           "permissions": "*"
         }
+      ],
+      "http_node_user": [
+        {
+          "username": "admin",
+          "password": "password"
+        }
       ]
     }
     ```
-4. (Optional) Disable authentication by removing all users
+4. (Optional) Disable IDE authentication by removing all users from users array
     ```json
     {
       "ssl": true,
@@ -32,7 +38,17 @@
       ]
     }
     ```
-5. (Optional) Add additional users to users array.  Use permission of `read` to grant read-only permissions to additional users.
+5. (Optional) Disable HTTP Node (Dashboard UI) authentication by removing the user from http_node_user
+    ```json
+    {
+      "ssl": true,
+      "certfile": "fullchain.pem",
+      "keyfile": "privkey.pem",
+      "http_node_user": [
+      ]
+    }
+    ```
+6. (Optional) Add additional IDE users to users array.  Use permission of `read` to grant read-only permissions to additional users.
     ```json
     {
       "ssl": true,
@@ -52,8 +68,8 @@
       ]
     }
     ```
-6. Start the "Node-RED" add-on
-7. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed Node-RED UI into Home Assistant UI using this example:
+7. Start the "Node-RED" add-on
+8. (Optional) Configure [panel_iframe](https://home-assistant.io/components/panel_iframe/) component to embed Node-RED UI into Home Assistant UI using this example:
 
     ```yaml
     panel_iframe:
@@ -63,7 +79,7 @@
         icon: mdi:nodejs
     ```
 
-8. (Optional) If you install [Node-RED Dashboard](https://github.com/node-red/node-red-dashboard) in Node-RED, you can expose the dashboard in the [Hass.io](https://home-assistant.io/hassio/) UI using this example to your [panel_iframe](https://home-assistant.io/components/panel_iframe/) section:
+9. (Optional) If you install [Node-RED Dashboard](https://github.com/node-red/node-red-dashboard) in Node-RED, you can expose the dashboard in the [Hass.io](https://home-assistant.io/hassio/) UI using this example to your [panel_iframe](https://home-assistant.io/components/panel_iframe/) section:
 
     ```yaml
     panel_iframe:
@@ -103,3 +119,9 @@ Please use [this thread](https://community.home-assistant.io/t/repository-notori
 - Moved data dir to /share/node-red
 #### Added
 - Added authentication for editor and admin API
+
+### 0.1.6 (2017-12-13)
+#### Changed
+- node-red-admin no longer re-installs on every restart of the addon
+#### Added
+- Added authentication for HTTP nodes (Dashboard UI)

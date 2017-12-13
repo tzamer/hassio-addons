@@ -1,6 +1,6 @@
 {
   "name": "Node-RED",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "slug": "nodered",
   "description": "Node-RED - (https://nodered.org/)",
   "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/node-red",
@@ -20,20 +20,36 @@
     "ssl": false,
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem",
-    "users": [{
+    "users": [
+      {
         "username": "admin",
         "password": "password",
         "permissions": "*"
-    }]
+      }
+    ],
+    "http_node_user": [
+      {
+        "username": "admin",
+        "password": "password"
+      }
+    ]
   },
   "schema": {
     "ssl": "bool",
     "certfile": "str",
     "keyfile": "str",
-    "users": [{
+    "users": [
+      {
         "username": "str",
         "password": "str",
         "permissions": "str"
-    }]
+      }
+    ],
+    "http_node_user": [
+      {
+        "username": "str",
+        "password": "str"
+      }
+    ]
   }
 }
