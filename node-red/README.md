@@ -89,6 +89,8 @@
         icon: mdi:nodejs
     ```
 
+10. (Optional) Install [node-red-contrib-home-assistant](https://flows.nodered.org/node/node-red-contrib-home-assistant) from Manage Palette window. After install place some HA node to flow and setup HA server for it. As you are running Node-RED inside Hass.io addon/container you can use Hass.io API Proxy address `http://hassio/homeassistant` as Home Assistant server address (server node Base URL). This way you don't need any real network address. 
+
 ## Support
 
 Please use [this thread](https://community.home-assistant.io/t/repository-notoriousbdg-add-ons-node-red-and-ha-bridge/23247) for feedback.
