@@ -89,11 +89,20 @@
         icon: mdi:nodejs
     ```
 
-10. (Optional) Install [node-red-contrib-home-assistant](https://flows.nodered.org/node/node-red-contrib-home-assistant) from Manage Palette window. After install place some HA node to flow and setup HA server for it. As you are running Node-RED inside Hass.io addon/container you can use Hass.io API Proxy address `http://hassio/homeassistant` as Home Assistant server address (server node Base URL). This way you don't need any real network address. 
+10. (Optional) Install [node-red-contrib-home-assistant](https://flows.nodered.org/node/node-red-contrib-home-assistant) from Manage Palette window. After install place some HA node to flow and setup HA server for it. As you are running Node-RED inside Hass.io addon/container you can use Hass.io API Proxy address `http://hassio/homeassistant` as Home Assistant server address (server node Base URL). This way you don't need any real network address.
 
 ## Support
 
 Please use [this thread](https://community.home-assistant.io/t/repository-notoriousbdg-add-ons-node-red-and-ha-bridge/23247) for feedback.
+
+## FAQ
+
+### Q: How do I update to the latest version of Node-RED ASAP?
+A: Since this addon is derived from the official Node-RED docker image, you may need to manually force hassio to rebuild the image to get the latest Node-RED version. To force a rebuild of the image to upgrade Node-RED, navigate to http://hassio.local:8123/hassio/addon/27e642c6_nodered then click on "Rebuild".
+
+### Q: How do I update builtin nodes when updating via "Manage palette" fails?
+A: The builtin nodes can be updated by manually force hassio to rebuild the image to get the latest Node-RED version. To force a rebuild of the image to upgrade Node-RED, navigate to http://hassio.local:8123/hassio/addon/27e642c6_nodered then click on "Rebuild".
+
 
 ## Changelog
 
@@ -127,3 +136,7 @@ Please use [this thread](https://community.home-assistant.io/t/repository-notori
 - node-red-admin no longer re-installs on every restart of the addon
 #### Added
 - Added authentication for HTTP nodes (Dashboard UI)
+
+### 0.1.7 (2018-01-15)
+#### Changed
+- Bumping version to assist with upgrading to Node-RED v0.18.3
