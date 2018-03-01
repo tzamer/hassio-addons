@@ -1,4 +1,4 @@
-# NotoriousBDG Hass.io Add-Ons
+# Tzam's favorite Hass.io Add-Ons
 ---------
 
 My repository for [Hass.io](https://home-assistant.io/hassio/) add-ons.
@@ -11,8 +11,7 @@ My repository for [Hass.io](https://home-assistant.io/hassio/) add-ons.
 
 [Follow the official instructions](https://home-assistant.io/hassio/installing_third_party_addons/) and use the following URL:
 
-    https://github.com/notoriousbdg/hassio-addons
+    https://github.com/tzamer/hassio-addons
 
-## Support
-
-Please use [this thread](https://community.home-assistant.io/t/repository-notoriousbdg-add-ons-node-red-and-ha-bridge/23247) for feedback.
+## Sources
+* https://github.com/notoriousbdg/hassio-addons
